@@ -43,23 +43,44 @@ Tree.prototype.Insert = function(node, cRoot) {
              Delete M from the left side in Recursive Manner 
  */
 
+Tree.prototype.findMax = function(cRoot = this.root) {
+  if (cRoot) {
+    while (cRoot.right) {
+      cRoot = cRoot.right;
+    }
+    return cRoot;
+  } else {
+    return null;
+  }
+};
+
 Tree.prototype.deleteNode = function(val, cRoot = this.root) {
   if (!cRoot) {
     return null;
   } else if (val < cRoot.data) {
+    cRoot.left = this.deleteNode(val, cRoot.left);
   } else if (val > cRoot.data) {
+    cRoot.right = this.deleteNode(val, cRoot.right);
   } else {
     //Here we'll find the node K
     if (cRoot.left && cRoot.right) {
+      let leftMaxNode = this.findMax(cRoot.left);
+      cRoot.data = leftMaxNode.data;
+      cRoot.left = this.deleteNode(leftMaxNode.data, cRoot.left);
       // scenario (3)
     } else if (cRoot.left) {
       // scenario (2)
+      cRoot = cRoot.left;
     } else if (cRoot.right) {
       // scenario (2)
+      cRoot = cRoot.right;
     } else {
       // scenario (1)
+      cRoot = null;
     }
   }
+  this.root = cRoot;
+  return cRoot;
 };
 
 let tree1 = new Tree();
