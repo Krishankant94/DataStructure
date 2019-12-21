@@ -83,4 +83,5 @@ Tree.prototype.deleteNode = function(val, cRoot = this.root) {
   return cRoot;
 };
 
+//create Instance of Tree
 let tree1 = new Tree();
