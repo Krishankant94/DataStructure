@@ -83,5 +83,21 @@ Tree.prototype.deleteNode = function(val, cRoot = this.root) {
   return cRoot;
 };
 
+//Implement Search in BST
+
+Tree.prototype.search = function(val, cRoot = this.root) {
+  let found = false;
+  if (cRoot) {
+    if (val < cRoot.data) {
+      found = this.search(val, cRoot.left);
+    } else if (val > cRoot.data) {
+      found = this.search(val, cRoot.right);
+    } else {
+      return true;
+    }
+  }
+  return found;
+};
+
 //create Instance of Tree
 let tree1 = new Tree();
