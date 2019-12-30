@@ -27,7 +27,9 @@ BinaryHeap.prototype.reArrangeHeap = function() {
 };
 
 BinaryHeap.prototype.Delete = function() {
+  //In heap deletion  will always happen at the top so
   this.heap[0] = this.heap.pop();
+  // Now re arrange the Heap
   let index = 0;
   while (this.heap[2 * index + 1] || this.heap[2 * index + 2]) {
     let parent = this.heap[index];
