@@ -99,5 +99,19 @@ Tree.prototype.search = function(val, cRoot = this.root) {
   return found;
 };
 
+//Find the count of Node
+Tree.prototype.getCount = function(cRoot = this.root, count = 0) {
+  if (cRoot) {
+    count++;
+    if (cRoot.left) {
+      count = this.getCount(cRoot.left, count);
+    }
+    if (cRoot.right) {
+      count = this.getCount(cRoot.right, count);
+    }
+  }
+  return count;
+};
+
 //create Instance of Tree
 let tree1 = new Tree();
