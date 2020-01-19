@@ -1,4 +1,4 @@
-/****************Adjacency Matrix Repreasentation Of Grpah*/
+/****************Adjacency List Repreasentation Of Grpah*/
 function Graph(noOfV) {
   this.noOfV = noOfV;
   this.AdjRepresentation = new Map();
